@@ -9,14 +9,16 @@
 	</head>
 	<body>
 		<header>
-			<h1>Boothouse</h1>
+        <div class="logo">
+            <a href="index.php"><img src="/build/img/logo.png" alt="logo"></a>
+        </div>
 			<div class="navegacion">
 				<nav>
-					<a href="#">Inicio</a>
-					<a href="#">Servicios</a>
-					<a href="#">Quiénes Somos</a>
-					<a href="#">Referencias</a>
-					<a href="#">Contacto</a>
+					<a href="index.php">Inicio</a>
+					<a href="servicios.php">Servicios</a>
+					<a href="somos.php">Quiénes Somos</a>
+					<a href="referencias.php">Referencias</a>
+					<a href="contacto.php">Contacto</a>
 				</nav>
 			</div>
 			<div class="container-icon">
