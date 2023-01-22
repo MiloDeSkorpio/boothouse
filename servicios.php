@@ -215,6 +215,7 @@
             </div>
         </div>
     </div>
-
+</main>	
+        <script src="/build/js/bundle.min.js"></script>
 
     <?php include('includes/templates/footer.php') ?>

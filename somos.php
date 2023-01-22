@@ -3,7 +3,7 @@
     <div class="hero-somos">
         <div class="color">
             <div class="textos">
-                <h1>Servicios</h1>
+                <h1>¿Quienes Somos?</h1>
             </div><!-- .textos -->
         </div><!-- .color-->
     </div>
@@ -51,5 +51,6 @@
 				</picture>
                 </div>
     </div>
+</main>	
 
 <?php include('includes/templates/footer.php') ?>

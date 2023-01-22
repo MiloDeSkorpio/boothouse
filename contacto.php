@@ -1,7 +1,8 @@
 <?php include('includes/templates/header.php') ?>
 <main>
-<div class="contenedor">
+    <div class="contenedor">
 
-</div>
+    </div>
+</main>	
 
 <?php include('includes/templates/footer.php') ?>
