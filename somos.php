@@ -11,7 +11,7 @@
         <h2>BOOT HOUSE: un servicio inconfundible</h2>
         <div class="info">
             <h2>Una instalación completa</h2>
-            <div class="galery">
+            <div class="galery-s">
                 <picture>
                     <source srcset="build/img/somos-1.webp" type="image/webp">
                     <source srcset="build/img/somos-1.jpeg"" type=" image/jpg">

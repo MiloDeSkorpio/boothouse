@@ -8,7 +8,7 @@
 			</div><!-- .textos -->
 		</div><!-- .color-->
 	</div>
-	<div class="contenedor pading-top">
+	<div class="contenedor p">
 		<div class="dudas">
 			<p>¿Quieres valuar tu casa o quieres equiparla?</p>
 			<a href="contacto.php" class="boton-contacto">Envía tu duda y con gusto te atendemos!!</a>
