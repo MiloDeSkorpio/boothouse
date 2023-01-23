@@ -10,9 +10,7 @@
     <div class="contenedor">
 		<h2>Valúa tu casa de acuerdo al status económico</h2>
 		<p>Tu necesidad es nuestra mejor arma: deja que nosotros nos encarguemos de sacar la estética interior en tu hogar. Creamos diseños exclusivos inspirados en tu estilo personal, necesidades para decoración y gustos. Nuestro equipo emplea su atención al detalle y productos de la mejor calidad para ofrecer una amplia gama de servicios.</p>
-	</div>
-    <div class="contenedor pading-top">
-        <h2>Casa de Interes Social</h2>
+            <h2>Casa de Interes Social</h2>
         <div class="container-items">
             <div class="item">
                 <div class="info-product">
@@ -85,9 +83,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="contenedor pading-top">
-        <h2>Casa medio residencial/semilujo/media</h2>
+    <h2>Casa medio residencial/semilujo/media</h2>
         <div class="container-items">
             <div class="item">
                 <div class="info-product">
@@ -160,10 +156,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="contenedor pading-top">
-        <h2>Casa Residencial</h2>
-        <div class="container-items">
+    <h2>Casa Residencial</h2>
+    <div class="container-items">
             <div class="item">
                 <div class="info-product">
                     <h3>Tomacorriente Inteligente Wi-Fi con 3 Botones</h3>
@@ -214,7 +208,9 @@
                 </div>
             </div>
         </div>
-    </div>
+	</div>
+
+
 </main>	
         <script src="/build/js/bundle.min.js"></script>
 
