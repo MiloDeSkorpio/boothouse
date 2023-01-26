@@ -3,7 +3,7 @@
     <div class="hero-refer">
         <div class="color">
             <div class="textos">
-                <h1>Fotos y referencias</h1>
+                <h1>Fotos y Referencias</h1>
             </div><!-- .textos -->
         </div><!-- .color-->
     </div>

@@ -22,7 +22,6 @@
 					<img src="build/img/index-1.jpeg"" alt="">
 					<h3>Asesoria</h3>
 				</picture>
-
 				<picture>
 					<source srcset=" build/img/index-2.webp" type="image/webp">
 					<source srcset="build/img/index-2.jpeg"" type=" image/jpg">
@@ -36,8 +35,10 @@
 					<h3>Instalación</h3>
 				</picture>
 			</div>
+			<div class="info-text">
 			<p>En BOOT HOUSE, nuestro objetivo es que te sientas cómodo en tu hogar. Creamos diseños innovadores y actuales para nuestros clientes, centrándonos en estilos para todos los status económicos para tu casa inteligente. Si buscas ir a la vanguardia, un diseño innovador o arreglar tu hogar para un nuevo panorama domotico, en BOOT HOUSE tenemos la respuesta.
 				Creemos que tú eres tu mejor diseñador. Por eso, ofrecemos un servicio completo que incluye asesoría, equipos e instalación.</p>
+			</div>
 			<iframe width=" 560" height="315" src="https://www.youtube.com/embed/y5kjQzW6npI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 			</div>
 		</div>
