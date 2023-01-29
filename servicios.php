@@ -25,5 +25,6 @@
 </main>	
         <script src="/build/js/products.js"></script> 
         <script src="/build/js/carrito.js"></script> 
+        <script src="/build/js/pedido.js"></script> 
 
     <?php include('includes/templates/footer.php') ?>
