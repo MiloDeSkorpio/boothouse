@@ -25,18 +25,38 @@ const renderCarrito = () =>{
             <img src="${product.img}">
             <p>${product.nombre}</p>
             <p>$${product.precio}</p>
+            <span class="restar"> - </span>
             <p>Cantidad:${product.cantidad}</p>
+            <span class="sumar"> + </span>
             <p>Total:${product.cantidad * product.precio}</p>
+            <span class="delete-product"> x </span>
         `;
         modalContainer.append(carritoContent);
 
+        let restar = carritoContent.querySelector(".restar");
+        restar.addEventListener("click", () => {
+            if(product.cantidad !== 1){
+                product.cantidad--;
+                renderCarrito();
+                saveLocal();
+            }
+        });
+        let sumar = carritoContent.querySelector(".sumar");
+        sumar.addEventListener("click", () => {
+            product.cantidad++;
+            renderCarrito();
+            saveLocal();
+        });
         //boton eliminar
-
-        let eliminar  = document.createElement("span");
-        eliminar.innerText = "x";
-        eliminar.classList.add("delete-product")
-        carritoContent.append(eliminar)
-        eliminar.addEventListener("click", eliminarProducto)
+        let eliminar  = carritoContent.querySelector(".delete-product");
+        eliminar.addEventListener("click", () => {
+            eliminarProducto(product.id);
+        });
+        // let eliminar  = document.createElement("span");
+        // eliminar.innerText = "x";
+        // eliminar.classList.add("delete-product")
+        // carritoContent.append(eliminar)
+        // eliminar.addEventListener("click", eliminarProducto)
     });
 
     const total = carrito.reduce((acc,el) => acc + el.precio * el.cantidad,0);
@@ -47,15 +67,21 @@ const renderCarrito = () =>{
     modalContainer.append(totalBuying);
 }
 verCarrito.addEventListener("click",renderCarrito);
-const eliminarProducto = () => {
-    const foundId = carrito.find((element) => element.id);
+//eliminar producto
+const eliminarProducto = (id) => {
+    const foundId = carrito.find((element) => element.id === id);
         carrito = carrito.filter((carritoId) => {
             return carritoId !== foundId;
         });
     carritoCount();
+    saveLocal();
     renderCarrito();
 };
 const carritoCount = () => {
     cantidadCarrito.style.display = "block";
-    cantidadCarrito.innerText = carrito.length;
+    const carritoLength = carrito.length;
+    localStorage.setItem("carritoLength", JSON.stringify(carritoLength));
+    cantidadCarrito.innerText = JSON.parse(localStorage.getItem("carritoLength"))
 };
+
+carritoCount();

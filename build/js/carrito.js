@@ -5,7 +5,7 @@ const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modal-container");
 const cantidadCarrito = document.getElementById("cantidadCarrito");
 
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 //Agregar productos al div lista-productos 
 productos.forEach((product) => {
     let content = document.createElement("div");
@@ -41,6 +41,7 @@ productos.forEach((product) => {
         }
         console.log(carrito);
         carritoCount();
+        saveLocal();
     });
 });
 //Agregar productos al div lista-productos-mr 
@@ -78,6 +79,7 @@ productosmr.forEach((product) => {
         }
         console.log(carrito);
         carritoCount();
+        saveLocal();
     });
 });
 //Agregar productos al div lista-productos-r 
@@ -115,6 +117,10 @@ productosR.forEach((product) => {
         }
         console.log(carrito);
         carritoCount();
+        saveLocal();
     });
 });
 
+const saveLocal =() => {
+    localStorage.setItem("carrito",JSON.stringify(carrito));
+}
