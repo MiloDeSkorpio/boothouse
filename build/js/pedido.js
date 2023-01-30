@@ -6,11 +6,11 @@ const renderCarrito = () =>{
     const modalHeader = document.createElement("div");
     modalHeader.classList.add("modal-header");
     modalHeader.innerHTML = `
-        <h1 class="modal-header-title">Carrito</h1>
+        <h1 class="modal-header-title">Bot House Shop</h1>
     `;
     modalContainer.append(modalHeader);
 
-    const modalButton = document.createElement("h1");
+    const modalButton = document.createElement("span");
     modalButton.innerHTML = "x";
     modalButton.classList.add("modal-header-button");
     modalButton.addEventListener("click", () => {
@@ -23,12 +23,12 @@ const renderCarrito = () =>{
         carritoContent.classList.add("modal-content");
         carritoContent.innerHTML = `
             <img src="${product.img}">
-            <p>${product.nombre}</p>
-            <p>$${product.precio}</p>
+            <p class="name">${product.nombre}</p>
+            <p class= "costoU">$${product.precio}</p>
             <span class="restar"> - </span>
-            <p>Cantidad:${product.cantidad}</p>
+            <p>Cantidad: ${product.cantidad}</p>
             <span class="sumar"> + </span>
-            <p>Total:${product.cantidad * product.precio}</p>
+            <p>Total: $${product.cantidad * product.precio}</p>
             <span class="delete-product"> x </span>
         `;
         modalContainer.append(carritoContent);
@@ -52,11 +52,6 @@ const renderCarrito = () =>{
         eliminar.addEventListener("click", () => {
             eliminarProducto(product.id);
         });
-        // let eliminar  = document.createElement("span");
-        // eliminar.innerText = "x";
-        // eliminar.classList.add("delete-product")
-        // carritoContent.append(eliminar)
-        // eliminar.addEventListener("click", eliminarProducto)
     });
 
     const total = carrito.reduce((acc,el) => acc + el.precio * el.cantidad,0);
