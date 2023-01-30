@@ -1,6 +1,6 @@
 //Activar modal
 const renderCarrito = () =>{
-
+    //modal  Contenedor carrito
     modalContainer.innerHTML = "";
     modalContainer.style.display = "flex";
     const modalHeader = document.createElement("div");
@@ -9,7 +9,7 @@ const renderCarrito = () =>{
         <h1 class="modal-header-title">Bot House Shop</h1>
     `;
     modalContainer.append(modalHeader);
-
+    //boton cerrar modal
     const modalButton = document.createElement("span");
     modalButton.innerHTML = "x";
     modalButton.classList.add("modal-header-button");
@@ -32,7 +32,7 @@ const renderCarrito = () =>{
             <span class="delete-product"> x </span>
         `;
         modalContainer.append(carritoContent);
-
+        //restar cantidas
         let restar = carritoContent.querySelector(".restar");
         restar.addEventListener("click", () => {
             if(product.cantidad !== 1){
@@ -41,6 +41,7 @@ const renderCarrito = () =>{
                 saveLocal();
             }
         });
+        //sumar cantidad
         let sumar = carritoContent.querySelector(".sumar");
         sumar.addEventListener("click", () => {
             product.cantidad++;
@@ -53,15 +54,17 @@ const renderCarrito = () =>{
             eliminarProducto(product.id);
         });
     });
-
+    //sumar total
     const total = carrito.reduce((acc,el) => acc + el.precio * el.cantidad,0);
-
     const totalBuying = document.createElement("div");
     totalBuying.classList.add("total-content");
-    totalBuying.innerHTML = `<p>Total a pagar: $${total}</p>`;
+    totalBuying.innerHTML = `
+    <p>Total a pagar: $${total}</p>
+    `;
     modalContainer.append(totalBuying);
 }
 verCarrito.addEventListener("click",renderCarrito);
+
 //eliminar producto
 const eliminarProducto = (id) => {
     const foundId = carrito.find((element) => element.id === id);
@@ -72,11 +75,11 @@ const eliminarProducto = (id) => {
     saveLocal();
     renderCarrito();
 };
+//contador carrito
 const carritoCount = () => {
     cantidadCarrito.style.display = "block";
     const carritoLength = carrito.length;
     localStorage.setItem("carritoLength", JSON.stringify(carritoLength));
     cantidadCarrito.innerText = JSON.parse(localStorage.getItem("carritoLength"))
 };
-
 carritoCount();

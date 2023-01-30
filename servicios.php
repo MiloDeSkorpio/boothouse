@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="/build/css/app.css" />
 	<title>Boot House</title>
 </head>
-
 <body>
 	<header>
 		<div class="logo">
@@ -78,9 +77,8 @@
 			<div class="container-items" id="lista-productos-r">
 			</div>
 		</div><!--.contenedor -->
-		<div class="overlay">
-			<div id="modal-container" class="modal-container"></div>
-		</div>
+		
+			<div id="modal-container" class="modal-container sombra"></div>
 
 	</main>
 	<script src="/build/js/products.js"></script>
