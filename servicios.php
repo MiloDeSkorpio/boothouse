@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/build/css/app.css" />
 	<title>Boot House</title>
 </head>
+
 <body>
 	<header>
 		<div class="logo">
@@ -56,7 +57,7 @@
 			<i class="fa-solid fa-bars"></i>
 		</div>
 	</header>
-	<main>
+	<main id="main">
 		<div class="hero-serv">
 			<div class="color">
 				<div class="textos">
@@ -77,12 +78,95 @@
 			<div class="container-items" id="lista-productos-r">
 			</div>
 		</div><!--.contenedor -->
-		
-			<div id="modal-container" class="modal-container sombra"></div>
-
+		<div id="modal-container" class="modal-container sombra"></div>
+		<div class="modal" id="modal">
+			<div class="modalForm hiden" id="modalForm">
+				<button id="btnClose" class="btnClose">X</button>
+				<form id="form">
+					<div class="pago">
+						<h3>Datos de Pago</h3>
+						<div class="inputBox">
+							<span>Numero de Tarjeta</span>
+							<input type="text" maxlength="16" class="card-number-input">
+						</div>
+						<div class="inputBox">
+							<span>Titular Tarjeta</span>
+							<input type="text" class="card-holder-input">
+						</div>
+						<div class="flexbox">
+							<div class="inputBox">
+								<span>Mes de Expiración</span>
+								<select name="" id="" class="month-input">
+									<option selected disabled>Mes</option>
+									<option>01</option>
+									<option>02</option>
+									<option>03</option>
+									<option>04</option>
+									<option>05</option>
+									<option>06</option>
+									<option>07</option>
+									<option>08</option>
+									<option>09</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+								</select>
+							</div>
+							<div class="inputBox">
+								<span>Año de expiración</span>
+								<select name="" id="" class="year-input">
+									<option>21</option>
+									<option selected disabled>Año</option>
+									<option>22</option>
+									<option>23</option>
+									<option>24</option>
+									<option>25</option>
+									<option>26</option>
+									<option>27</option>
+									<option>28</option>
+									<option>29</option>
+									<option>30</option>
+								</select>
+							</div>
+							<div class="inputBox">
+								<span>cvv</span>
+								<input type="text" maxlength="4" class="cvv-input">
+							</div>
+						</div>
+					</div>
+					<div class="personales">
+						<h3>Datos Personales</h3>
+						<div class="field">
+							<span for="name">Nombre</span>
+							<input type="text" name="name" id="name" required>
+						</div>
+						<div class="field">
+							<span for="phone">Telefono</span>
+							<input type="text" name="phone" id="phone" required>
+						</div>
+						<div class="field">
+							<span for="email">Correo</span>
+							<input type="text" name="email" id="email" required>
+						</div>
+						<div class="field">
+							<span for="adress">Domicilio</span>
+							<input type="text" name="adress" id="adress" required>
+						</div>
+						<div class="field">
+							<input type="text" name="message" id="message" value="Productos" style="display: none;">
+						</div>
+					</div>
+					<input type="submit" id="button" value="Finalizar Compra">
+				</form>
+			</div>
+		</div>
 	</main>
 	<script src="/build/js/products.js"></script>
 	<script src="/build/js/carrito.js"></script>
 	<script src="/build/js/pedido.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+	<script type="text/javascript">
+		emailjs.init('SrPwTLrUjuKyf1SmD')
+	</script>
 	<?php include('includes/templates/footer.php') ?>

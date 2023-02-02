@@ -3,7 +3,9 @@ const shopContentmr = document.getElementById("lista-productos-mr");
 const shopContentr = document.getElementById("lista-productos-r");
 const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modal-container");
-const cantidadCarrito = document.getElementById("cantidadCarrito");
+const modal = document.getElementById("modal");
+const modalForm = document.getElementById("modalForm");
+
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 //Agregar productos al div lista-productos 

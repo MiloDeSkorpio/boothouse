@@ -1,5 +1,6 @@
 //Activar modal
 const renderCarrito = () =>{
+    window.scrollTo(0,0);
     //modal  Contenedor carrito
     modalContainer.innerHTML = "";
     modalContainer.style.display = "flex";
@@ -22,14 +23,22 @@ const renderCarrito = () =>{
         let carritoContent = document.createElement("div");
         carritoContent.classList.add("modal-content");
         carritoContent.innerHTML = `
-            <img src="${product.img}">
+            <div class="imgCarrito">
+                <img src="${product.img}">
+            </div>
+            <div class="infCarrito">
             <p class="name">${product.nombre}</p>
             <p class= "costoU">$${product.precio}</p>
+            </div>
+            <div class="cantCarrito">
             <span class="restar"> - </span>
             <p>Cantidad: ${product.cantidad}</p>
             <span class="sumar"> + </span>
+            </div>
+            <div class="totCarrito">
             <p>Total: $${product.cantidad * product.precio}</p>
             <span class="delete-product"> x </span>
+            </div>
         `;
         modalContainer.append(carritoContent);
         //restar cantidas
@@ -59,9 +68,19 @@ const renderCarrito = () =>{
     const totalBuying = document.createElement("div");
     totalBuying.classList.add("total-content");
     totalBuying.innerHTML = `
+    <div>
+    <button onclick="vaciarCarrito()" class="">Vaciar</button>
+    </div>
+    <div>
+    <button onclick="pagarCarrito()" class="">Pagar</button>
+    </div>
+    <div>
     <p>Total a pagar: $${total}</p>
+    </div>
+    
     `;
     modalContainer.append(totalBuying);
+    
 }
 verCarrito.addEventListener("click",renderCarrito);
 
@@ -81,5 +100,70 @@ const carritoCount = () => {
     const carritoLength = carrito.length;
     localStorage.setItem("carritoLength", JSON.stringify(carritoLength));
     cantidadCarrito.innerText = JSON.parse(localStorage.getItem("carritoLength"))
+    
 };
 carritoCount();
+
+function vaciarCarrito() {
+    if(carrito.length === 0){
+        alert('El Carrito esta Vacio!')
+    }else {
+        localStorage.clear();
+        alert('Vaciaste el Carrito');
+        location.href = "servicios.php"
+    }
+}
+
+
+function pagarCarrito ( )  {
+    if(carrito.length === 0){
+        alert('Agrega un Producto');
+    }else {
+        window.scrollTo(0,0);
+        modalContainer.style.display = "none";
+        modal.style.opacity ="1";
+        modal.style.visibility ="visible";
+        modalForm.classList.toggle("hiden")
+        const proMes = carrito.map(carrito => carrito.nombre);
+        document.getElementById("message").value=proMes.toString();
+        //crear boton cerrar del modal
+        const closeCarrito = document.querySelector("#btnClose")
+        closeCarrito.addEventListener("click",() => {
+            modalForm.classList.toggle("hiden")
+            setTimeout(function(){
+                modal.style.opacity ="0";
+                modal.style.visibility ="hidden";
+            },800);
+        });
+        window.addEventListener("click", (e)=>{
+            if(e.target == modal){
+                modalForm.classList.toggle("hiden")
+                setTimeout(function(){
+                    modal.style.opacity ="0";
+                    modal.style.visibility ="hidden";
+                },800);
+            }
+        });
+        modalForm.append(closeCarrito);
+        //modalForm
+        const btn = document.getElementById('button');
+        document.getElementById('form')
+        .addEventListener('submit', function(event) {
+            event.preventDefault();
+            btn.value = 'Procesando...';
+            const serviceID = 'default_service';
+            const templateID = 'template_rlgla0u';
+            emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.value = 'Finalizar Compra';
+                alert('Compra Exitosa!');
+                localStorage.clear();
+                location.href = "servicios.php"
+            }, (err) => {
+                btn.value = 'Finalizar Compra';
+                alert(JSON.stringify(err));
+            });
+        });
+    }
+}
+
