@@ -37,7 +37,7 @@ const renderCarrito = () =>{
             </div>
             <div class="totCarrito">
             <p>Total: $${product.cantidad * product.precio}</p>
-            <span class="delete-product"> x </span>
+            <span class="delete-product"> Eliminar </span>
             </div>
         `;
         modalContainer.append(carritoContent);
@@ -69,10 +69,10 @@ const renderCarrito = () =>{
     totalBuying.classList.add("total-content");
     totalBuying.innerHTML = `
     <div>
-    <button onclick="vaciarCarrito()" class="">Vaciar</button>
+    <button onclick="vaciarCarrito()" class="delete-product">Vaciar</button>
     </div>
     <div>
-    <button onclick="pagarCarrito()" class="">Pagar</button>
+    <button onclick="pagarCarrito()" class="pagar">Pagar</button>
     </div>
     <div>
     <p>Total a pagar: $${total}</p>

@@ -85,17 +85,17 @@
 				<form id="form">
 					<div class="pago">
 						<h3>Datos de Pago</h3>
-						<div class="inputBox">
-							<span>Numero de Tarjeta</span>
+						<div class="field">
+							<label>Numero de Tarjeta</label>
 							<input type="text" maxlength="16" class="card-number-input">
 						</div>
-						<div class="inputBox">
-							<span>Titular Tarjeta</span>
+						<div class="field">
+							<label>Titular Tarjeta</label>
 							<input type="text" class="card-holder-input">
 						</div>
 						<div class="flexbox">
-							<div class="inputBox">
-								<span>Mes de Expiración</span>
+							<div class="field">
+								<label>Mes de Expiración</label>
 								<select name="" id="" class="month-input">
 									<option selected disabled>Mes</option>
 									<option>01</option>
@@ -112,8 +112,8 @@
 									<option>12</option>
 								</select>
 							</div>
-							<div class="inputBox">
-								<span>Año de expiración</span>
+							<div class="field">
+								<label>Año de expiración</label>
 								<select name="" id="" class="year-input">
 									<option>21</option>
 									<option selected disabled>Año</option>
@@ -128,8 +128,8 @@
 									<option>30</option>
 								</select>
 							</div>
-							<div class="inputBox">
-								<span>cvv</span>
+							<div class="field">
+								<label>cvv</label>
 								<input type="text" maxlength="4" class="cvv-input">
 							</div>
 						</div>
@@ -137,26 +137,26 @@
 					<div class="personales">
 						<h3>Datos Personales</h3>
 						<div class="field">
-							<span for="name">Nombre</span>
+							<label for="name">Nombre</label>
 							<input type="text" name="name" id="name" required>
 						</div>
 						<div class="field">
-							<span for="phone">Telefono</span>
+							<label for="phone">Telefono</label>
 							<input type="text" name="phone" id="phone" required>
 						</div>
 						<div class="field">
-							<span for="email">Correo</span>
+							<label for="email">Correo</label>
 							<input type="text" name="email" id="email" required>
 						</div>
 						<div class="field">
-							<span for="adress">Domicilio</span>
+							<label for="adress">Domicilio</label>
 							<input type="text" name="adress" id="adress" required>
 						</div>
 						<div class="field">
 							<input type="text" name="message" id="message" value="Productos" style="display: none;">
 						</div>
 					</div>
-					<input type="submit" id="button" value="Finalizar Compra">
+					<input type="submit" id="button" value="Finalizar Compra" class="pagar">
 				</form>
 			</div>
 		</div>
@@ -165,7 +165,6 @@
 	<script src="/build/js/carrito.js"></script>
 	<script src="/build/js/pedido.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 	<script type="text/javascript">
 		emailjs.init('SrPwTLrUjuKyf1SmD')
 	</script>
