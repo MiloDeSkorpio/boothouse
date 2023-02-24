@@ -110,7 +110,7 @@ function vaciarCarrito() {
     }else {
         localStorage.clear();
         alert('Vaciaste el Carrito');
-        location.href = "servicios.php"
+        location.href = "servicios.html"
     }
 }
 
@@ -151,18 +151,10 @@ function pagarCarrito ( )  {
         .addEventListener('submit', function(event) {
             event.preventDefault();
             btn.value = 'Procesando...';
-            const serviceID = 'default_service';
-            const templateID = 'template_rlgla0u';
-            emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                btn.value = 'Finalizar Compra';
+
                 alert('Compra Exitosa!');
                 localStorage.clear();
-                location.href = "servicios.php"
-            }, (err) => {
-                btn.value = 'Finalizar Compra';
-                alert(JSON.stringify(err));
-            });
+                location.href = "servicios.html"
         });
     }
 }
