@@ -22,13 +22,15 @@ const renderCarrito = () =>{
     carrito.forEach((product) => {
         let carritoContent = document.createElement("div");
         carritoContent.classList.add("modal-content");
+        const subtotalP = product.cantidad * product.precio;
+        const value = Intl.NumberFormat('en-EN').format(subtotalP)
         carritoContent.innerHTML = `
             <div class="imgCarrito">
                 <img src="${product.img}">
             </div>
             <div class="infCarrito">
             <p class="name">${product.nombre}</p>
-            <p class= "costoU">$${product.precio}</p>
+            <p class= "costoU">$${value}</p>
             </div>
             <div class="cantCarrito">
             <span class="restar"> - </span>
@@ -36,7 +38,7 @@ const renderCarrito = () =>{
             <span class="sumar"> + </span>
             </div>
             <div class="totCarrito">
-            <p>Total: $${product.cantidad * product.precio}</p>
+            <p>Total: $${value}</p>
             <span class="delete-product"> Eliminar </span>
             </div>
         `;
@@ -66,6 +68,7 @@ const renderCarrito = () =>{
     //sumar total
     const total = carrito.reduce((acc,el) => acc + el.precio * el.cantidad,0);
     const totalBuying = document.createElement("div");
+    const value = Intl.NumberFormat('en-EN').format(total)
     totalBuying.classList.add("total-content");
     totalBuying.innerHTML = `
     <div>
@@ -75,12 +78,10 @@ const renderCarrito = () =>{
     <button onclick="pagarCarrito()" class="pagar">Pagar</button>
     </div>
     <div>
-    <p>Total a pagar: $${total}</p>
+    <p>Total a pagar: $${value}</p>
     </div>
-    
     `;
     modalContainer.append(totalBuying);
-    
 }
 verCarrito.addEventListener("click",renderCarrito);
 
@@ -103,7 +104,6 @@ const carritoCount = () => {
     
 };
 carritoCount();
-
 function vaciarCarrito() {
     if(carrito.length === 0){
         alert('El Carrito esta Vacio!')
@@ -113,8 +113,6 @@ function vaciarCarrito() {
         location.href = "servicios.html"
     }
 }
-
-
 function pagarCarrito ( )  {
     if(carrito.length === 0){
         alert('Agrega un Producto');
@@ -124,8 +122,11 @@ function pagarCarrito ( )  {
         modal.style.opacity ="1";
         modal.style.visibility ="visible";
         modalForm.classList.toggle("hiden")
-        const proMes = carrito.map(carrito => carrito.nombre);
-        document.getElementById("message").value=proMes.toString();
+        const proMes = carrito.map(carrito => [carrito.cantidad + ' '+ carrito.nombre]);
+        document.getElementById("message").value=proMes.toString()
+        let min =1000
+        let max =10000
+        document.getElementById("orden").value=orden =Math.floor(Math.random()*(max-min+1)+min)
         //crear boton cerrar del modal
         const closeCarrito = document.querySelector("#btnClose")
         closeCarrito.addEventListener("click",() => {
@@ -151,11 +152,18 @@ function pagarCarrito ( )  {
         .addEventListener('submit', function(event) {
             event.preventDefault();
             btn.value = 'Procesando...';
-
+            const serviceID = 'default_service';
+            const templateID = 'template_rlgla0u';
+            emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.value = 'Finalizar Compra';
                 alert('Compra Exitosa!');
                 localStorage.clear();
                 location.href = "servicios.html"
+            }, (err) => {
+                btn.value = 'Finalizar Compra';
+                alert(JSON.stringify(err));
+            });
         });
     }
 }
-

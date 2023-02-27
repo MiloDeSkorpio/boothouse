@@ -12,19 +12,32 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 productos.forEach((product) => {
     let content = document.createElement("div");
     content.classList.add("item");
+    const value = Intl.NumberFormat('en-EN').format(product.precio)
     content.innerHTML = `
         <p class="proTitle">${product.nombre}</p>
         <img src="${product.img}"/>
         <p>Se incluye material e instalación</p>
-        <p class="price">$${product.precio}</p>
+        <p class="price">$${value}</p>
     `
     shopContent.append(content);
     let comprar = document.createElement("button");
+    let detalles = document.createElement("button");
     comprar.innerText = "Comprar";
     comprar.className = "btn-add-cart";
+    detalles.innerText = "Detalles";
+    detalles.className = "btn-details";
+    detalles.setAttribute('id',`${product.id}`)
     content.append(comprar);
+    // content.append(detalles);
 //Pasar producto a carrito
     comprar.addEventListener("click", () => {
+        const alerta = document.createElement('DIV');
+        alerta.innerText = "Se Agrego Producto al Carrito"
+        alerta.classList.add('alerta');
+        content.append(alerta);
+        setTimeout(function(){
+            alerta.style.display ="none";
+        },1500);
         const repeat = carrito.some((repeatProduct)=> repeatProduct.id === product.id );
         if(repeat){
             carrito.map( (prod) =>{
@@ -41,20 +54,26 @@ productos.forEach((product) => {
                 cantidad: product.cantidad,
             });
         }
-        console.log(carrito);
         carritoCount();
         saveLocal();
-    });
+    });//boton comprar
+    detalles.addEventListener('click',(e)=>{
+        const ventanaDetalles = document.createElement('DIV');
+        ventanaDetalles.classList.add('container__detalles');
+        const producto = e.target.id
+        console.log(producto)
+    });//boton Detalles
 });
 //Agregar productos al div lista-productos-mr 
 productosmr.forEach((product) => {
     let content = document.createElement("div");
     content.classList.add("item");
+    const value = Intl.NumberFormat('en-EN').format(product.precio)
     content.innerHTML = `
         <p class="proTitle">${product.nombre}</p>
         <img src="${product.img}"/>
         <p>Se incluye material e instalación</p>
-        <p class="price">$${product.precio}</p>
+        <p class="price">$${value}</p>
     `
     shopContentmr.append(content);
     let comprar = document.createElement("button");
@@ -63,6 +82,13 @@ productosmr.forEach((product) => {
     content.append(comprar);
 //Pasar producto a carrito
     comprar.addEventListener("click", () => {
+        const alerta = document.createElement('DIV');
+        alerta.innerText = "Se Agrego Producto al Carrito"
+        alerta.classList.add('alerta');
+        content.append(alerta);
+        setTimeout(function(){
+            alerta.style.display ="none";
+        },1500);
         const repeat = carrito.some((repeatProduct)=> repeatProduct.id === product.id );
         if(repeat){
             carrito.map( (prod) =>{
@@ -79,7 +105,6 @@ productosmr.forEach((product) => {
                 cantidad: product.cantidad,
             });
         }
-        console.log(carrito);
         carritoCount();
         saveLocal();
     });
@@ -88,11 +113,12 @@ productosmr.forEach((product) => {
 productosR.forEach((product) => {
     let content = document.createElement("div");
     content.classList.add("item");
+    const value = Intl.NumberFormat('en-EN').format(product.precio)
     content.innerHTML = `
         <p class="proTitle">${product.nombre}</p>
         <img src="${product.img}"/>
         <p>Se incluye material e instalación</p>
-        <p class="price">$${product.precio}</p>
+        <p class="price">$${value}</p>
     `
     shopContentr.append(content);
     let comprar = document.createElement("button");
@@ -101,6 +127,13 @@ productosR.forEach((product) => {
     content.append(comprar);
 //Pasar producto a carrito
     comprar.addEventListener("click", () => {
+        const alerta = document.createElement('DIV');
+        alerta.innerText = "Se Agrego Producto al Carrito"
+        alerta.classList.add('alerta');
+        content.append(alerta);
+        setTimeout(function(){
+            alerta.style.display ="none";
+        },1500);
         const repeat = carrito.some((repeatProduct)=> repeatProduct.id === product.id );
         if(repeat){
             carrito.map( (prod) =>{
@@ -117,12 +150,11 @@ productosR.forEach((product) => {
                 cantidad: product.cantidad,
             });
         }
-        console.log(carrito);
         carritoCount();
         saveLocal();
     });
 });
-
 const saveLocal =() => {
     localStorage.setItem("carrito",JSON.stringify(carrito));
 }
+

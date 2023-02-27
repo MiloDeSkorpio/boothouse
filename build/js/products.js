@@ -5,6 +5,7 @@ const productos = [
         precio: 6898.50,
         img: "/build/img/cis824.jpg",
         cantidad: 1,
+        detalles: "Color Negro  Huella digital Biométrica, Velocidad de reconocimiento rápida 0,5 segundos. Tasa de error precisa 0.01%. Nunca fue tan fácil el control de visitantes, trabajadores, familiares, etc. Detecta horarios de rango. Registro de nombres, crea contraseñas con tiempos definidos de habilitación de accesos y desbloqueos de los mismos. Seguridad confiable, la interfaz de protección antirrobo detecta señales electromagnéticas y así evita el desbloqueo para algún extraño.      Auto bloqueo del sistema, después de ingresar la contraseña incorrecta 5 veces, el sistema se bloqueará automáticamente para proteger la casa.    La huella dactilar de los ancianos y los niños se puede identificar con precisión. El reconocimiento de bloqueo de huellas dactilares se extiende de 14-55 a 7-70 años para mejorar la tasa de reconocimiento. La dirección de la puerta puede hacer que la manija sea adecuada para la cerradura que la necesita. ",
     },
     {
         id: 2,
