@@ -12,23 +12,34 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 productos.forEach((product) => {
     let content = document.createElement("div");
     content.classList.add("item");
+    content.setAttribute('id',`${product.id}`)
     const value = Intl.NumberFormat('en-EN').format(product.precio)
     content.innerHTML = `
+        <div class="item__header">
         <p class="proTitle">${product.nombre}</p>
-        <img src="${product.img}"/>
-        <p>Se incluye material e instalación</p>
+        </div>
+        <div class="item__body">
+        <div class=img>
+            <img src="${product.img}"/>
+        </div>
+        <p class="detalles item-d">${product.detalles}</p>
+        <p class="info__i">Se incluye material e instalación</p>
         <p class="price">$${value}</p>
+        </div>
     `
     shopContent.append(content);
-    let comprar = document.createElement("button");
-    let detalles = document.createElement("button");
+    const itemFooter = document.createElement('DIV')
+    itemFooter.className = "item_footer";
+    content.append(itemFooter)
+    const comprar = document.createElement("button");
+    const detalles = document.createElement("button");
     comprar.innerText = "Comprar";
     comprar.className = "btn-add-cart";
     detalles.innerText = "Detalles";
     detalles.className = "btn-details";
     detalles.setAttribute('id',`${product.id}`)
-    content.append(comprar);
-    // content.append(detalles);
+    itemFooter.append(comprar);
+    itemFooter.append(detalles);
 //Pasar producto a carrito
     comprar.addEventListener("click", () => {
         const alerta = document.createElement('DIV');
@@ -58,28 +69,63 @@ productos.forEach((product) => {
         saveLocal();
     });//boton comprar
     detalles.addEventListener('click',(e)=>{
-        const ventanaDetalles = document.createElement('DIV');
-        ventanaDetalles.classList.add('container__detalles');
-        const producto = e.target.id
-        console.log(producto)
+        const ventanaDetalles = document.querySelector('body');
+        const idProduct = e.target.id;
+        const producto = document.getElementById(`${idProduct}`)
+        const overlay = document.createElement('DIV');
+        const slideShow = document.createElement('DIV');
+        overlay.classList.add('overlay');
+        ventanaDetalles.append(overlay);
+        slideShow.classList.add('slideShow');
+        overlay.append(slideShow)
+        slideShow.append(producto)
+        overlay.style.opacity = 1;
+        overlay.style.visibility = 'visible';
+        const btn_close = document.createElement('button');
+        btn_close.classList.add('btn_cerrar');
+        btn_close.innerText= 'X';
+        slideShow.append(btn_close)
+        document.querySelector('.btn_cerrar').addEventListener('click',()=>{
+            overlay.style.opacity = 0;
+            overlay.style.visibility = 'hidden';
+            location.reload();
+            });
+
+        
     });//boton Detalles
 });
 //Agregar productos al div lista-productos-mr 
 productosmr.forEach((product) => {
     let content = document.createElement("div");
     content.classList.add("item");
+    content.setAttribute('id',`${product.id}`)
     const value = Intl.NumberFormat('en-EN').format(product.precio)
     content.innerHTML = `
+        <div class="item__header">
         <p class="proTitle">${product.nombre}</p>
-        <img src="${product.img}"/>
-        <p>Se incluye material e instalación</p>
+        </div>
+        <div class="item__body">
+        <div class=img>
+            <img src="${product.img}"/>
+        </div>
+        <p class="detalles item-d">${product.detalles}</p>
+        <p class="info__i">Se incluye material e instalación</p>
         <p class="price">$${value}</p>
+        </div>
     `
     shopContentmr.append(content);
-    let comprar = document.createElement("button");
+    const itemFooter = document.createElement('DIV')
+    itemFooter.className = "item_footer";
+    content.append(itemFooter)
+    const comprar = document.createElement("button");
+    const detalles = document.createElement("button");
     comprar.innerText = "Comprar";
     comprar.className = "btn-add-cart";
-    content.append(comprar);
+    detalles.innerText = "Detalles";
+    detalles.className = "btn-details";
+    detalles.setAttribute('id',`${product.id}`)
+    itemFooter.append(comprar);
+    itemFooter.append(detalles);
 //Pasar producto a carrito
     comprar.addEventListener("click", () => {
         const alerta = document.createElement('DIV');
@@ -107,24 +153,65 @@ productosmr.forEach((product) => {
         }
         carritoCount();
         saveLocal();
-    });
+    });//boton comprar
+    detalles.addEventListener('click',(e)=>{
+        const ventanaDetalles = document.querySelector('body');
+        const idProduct = e.target.id;
+        const producto = document.getElementById(`${idProduct}`)
+        const overlay = document.createElement('DIV');
+        const slideShow = document.createElement('DIV');
+        overlay.classList.add('overlay');
+        ventanaDetalles.append(overlay);
+        slideShow.classList.add('slideShow');
+        overlay.append(slideShow)
+        slideShow.append(producto)
+        overlay.style.opacity = 1;
+        overlay.style.visibility = 'visible';
+        const btn_close = document.createElement('button');
+        btn_close.classList.add('btn_cerrar');
+        btn_close.innerText= 'X';
+        slideShow.append(btn_close)
+        document.querySelector('.btn_cerrar').addEventListener('click',()=>{
+            overlay.style.opacity = 0;
+            overlay.style.visibility = 'hidden';
+            location.reload();
+            });
+
+        
+    });//boton Detalles
 });
 //Agregar productos al div lista-productos-r 
 productosR.forEach((product) => {
     let content = document.createElement("div");
     content.classList.add("item");
+    content.setAttribute('id',`${product.id}`)
     const value = Intl.NumberFormat('en-EN').format(product.precio)
     content.innerHTML = `
+        <div class="item__header">
         <p class="proTitle">${product.nombre}</p>
-        <img src="${product.img}"/>
-        <p>Se incluye material e instalación</p>
+        </div>
+        <div class="item__body">
+        <div class=img>
+            <img src="${product.img}"/>
+        </div>
+        <p class="detalles item-d">${product.detalles}</p>
+        <p class="info__i">Se incluye material e instalación</p>
         <p class="price">$${value}</p>
+        </div>
     `
     shopContentr.append(content);
-    let comprar = document.createElement("button");
+    const itemFooter = document.createElement('DIV')
+    itemFooter.className = "item_footer";
+    content.append(itemFooter)
+    const comprar = document.createElement("button");
+    const detalles = document.createElement("button");
     comprar.innerText = "Comprar";
     comprar.className = "btn-add-cart";
-    content.append(comprar);
+    detalles.innerText = "Detalles";
+    detalles.className = "btn-details";
+    detalles.setAttribute('id',`${product.id}`)
+    itemFooter.append(comprar);
+    itemFooter.append(detalles);
 //Pasar producto a carrito
     comprar.addEventListener("click", () => {
         const alerta = document.createElement('DIV');
@@ -152,7 +239,32 @@ productosR.forEach((product) => {
         }
         carritoCount();
         saveLocal();
-    });
+    });//boton comprar
+    detalles.addEventListener('click',(e)=>{
+        const ventanaDetalles = document.querySelector('body');
+        const idProduct = e.target.id;
+        const producto = document.getElementById(`${idProduct}`)
+        const overlay = document.createElement('DIV');
+        const slideShow = document.createElement('DIV');
+        overlay.classList.add('overlay');
+        ventanaDetalles.append(overlay);
+        slideShow.classList.add('slideShow');
+        overlay.append(slideShow)
+        slideShow.append(producto)
+        overlay.style.opacity = 1;
+        overlay.style.visibility = 'visible';
+        const btn_close = document.createElement('button');
+        btn_close.classList.add('btn_cerrar');
+        btn_close.innerText= 'X';
+        slideShow.append(btn_close)
+        document.querySelector('.btn_cerrar').addEventListener('click',()=>{
+            overlay.style.opacity = 0;
+            overlay.style.visibility = 'hidden';
+            location.reload();
+            });
+
+        
+    });//boton Detalles
 });
 const saveLocal =() => {
     localStorage.setItem("carrito",JSON.stringify(carrito));
