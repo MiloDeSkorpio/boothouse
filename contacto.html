@@ -70,29 +70,29 @@
         <div class="info">
             <h2>Contactanos</h2>
             <div class="form-cont">
-            <form  action="correos.php" method="post" class="formulario" id="form">
+            <form  action="" method="post" class="formulario" id="form">
                 <div class="campo">
                     <label class="campo_label label-b"  for="nombre">Nombre</label>
-                    <input class="campo_field" type="text" placeholder="Tu Nombre" name="nombre" required>
+                    <input class="campo_field" type="text" placeholder="Ej. Pedro" name="nombre"  id="nombre"required>
                 </div>
                 <div class="campo">
                     <label class="campo_label label-b " for="telefono">Teléfono</label>
-                    <input class="campo_field" type="tel" placeholder="Tu Telefono" name="telefono" required>
+                    <input class="campo_field" type="tel" placeholder="Ej. 7221234567" name="telefono" id="telefono" minlength="10" maxlength="10" required>
                 </div>
                 <div class="campo">
                     <label class="campo_label label-b"  for="email">E-mail</label>
-                    <input class="campo_field" type="email" placeholder="Tu E-mail" name="email" required>
+                    <input class="campo_field" type="email" placeholder="Ej. pedro72@empresa.es" name="email" id="email" required>
                 </div>
                 <div class="campo">
                     <label class="campo_label label-b"  for="asunto">Asunto</label>
-                    <input class="campo_field" type="text" placeholder="Tu Asunto" name="asunto" required>
+                    <input class="campo_field" type="text" placeholder="Ej. Cotizacion de remodelacion" name="asunto" id="asunto" required>
                 </div>
                 <div class="campo">
                     <label class="campo_label label-b"  for="mensaje">Mensaje</label>
-                    <textarea class="campo_field campo_field-textarea" name="mensaje" placeholder="Dudas o Cotizaciones" required></textarea>
+                    <textarea class="campo_field campo_field-textarea" name="mensaje" id="mensaje" placeholder="Ej. Requiero de una cotización..." required></textarea>
                 </div>
                 <div class="btn">
-                    <input type="submit" value="Enviar" class="boton boton-con" name="enviar">
+                    <input type="submit" value="Enviar" class="boton boton-con" id="button" name="enviar">
                 </div>
             </form>
         </div>
@@ -101,6 +101,12 @@
 </main>	
 
 <script src="/build/js/bundle.min.js"></script>
+<script src="/build/js/contacto.js"></script>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  emailjs.init('SrPwTLrUjuKyf1SmD')
+</script>
         <footer>
                 <p>Para resevar una visita a sitio, llama al 7225127880 o envía un correo a boothouse@gmail.com</p>
         </footer>
